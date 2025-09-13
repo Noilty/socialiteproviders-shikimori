@@ -17,9 +17,7 @@ class Provider extends AbstractProvider
     /**
      * {@inheritdoc}
      */
-    protected $scopes = [
-        'user_rates',
-    ];
+    protected $scopes = ['user_rates'];
 
     /**
      * {@inheritdoc}
@@ -31,7 +29,7 @@ class Provider extends AbstractProvider
      */
     protected function getCognitoUrl(): string
     {
-        return env('SHIKIMORI_HOST');
+        return env('SHIKIMORI_URL', 'https://shikimori.one');
     }
 
     /**
@@ -39,10 +37,7 @@ class Provider extends AbstractProvider
      */
     protected function getAuthUrl($state): string
     {
-        return $this->buildAuthUrlFromBase(
-            $this->getCognitoUrl() . '/oauth/authorize',
-            $state
-        );
+        return $this->buildAuthUrlFromBase($this->getCognitoUrl() . '/oauth/authorize', $state);
     }
 
     /**
@@ -59,8 +54,7 @@ class Provider extends AbstractProvider
     protected function getUserByToken($token)
     {
         $response = $this->getHttpClient()->get(
-            $this->getCognitoUrl() . '/api/users/whoami',
-            [
+            $this->getCognitoUrl() . '/api/users/whoami', [
                 'headers' => [
                     'Authorization' => 'Bearer ' . $token,
                 ],
