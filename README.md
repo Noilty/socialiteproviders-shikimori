@@ -4,6 +4,9 @@
   composer require noilty/socialiteproviders-shikimori
 ```
 
+## Laravel Socialite
+https://laravel.com/docs/12.x/socialite#installation
+
 ## Installation & Basic Usage
 
 Please see the [Base Installation Guide](https://socialiteproviders.com/usage/), then follow the provider specific instructions below.
